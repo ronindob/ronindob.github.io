@@ -4,17 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <title>Lenni Art</title>
-  <link rel="stylesheet" href="styles.css?ver=0">
+  <link rel="stylesheet" href="styles/styles.css?ver=0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossoring>
-  <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="body">
   <header class="page-header">
     <div class="page-header__container">
       <a href="index.html" class="page-header__logo">
-        <img src="assets/images/logo.svg" class="page-header__logo-img" />
+        <!-- <img src="assets/images/logo.svg" 
+        class="page-header__logo-img"/> -->
+        <svg class="page-header__logo-img" width="202" height="147">
+          <use xlink:href="assets/icons/symbols.svg#logo"></use>
+        </svg>
       </a>
       <nav class="page-header__nav">
         <a href="#" class="page-header__nav-link">Меропртиятия</a>
@@ -26,97 +30,70 @@
     </div>
 
   </header>
+
   <main class="main">
     <div class="events">
-      <div class="events__container">
-        <h2 class="events__title title">Мероприятия</h2>
-        <div class="events__list listing">
-          <article class="listing__card-event card-event">
+      <section class="listing events__listing">
+        <h2 class="listing__title section-title">Мероприятия</h2>
+
+        <div class="listing__events-list">
+          <!-- prettier-ignore -->
+          <article class="card-event listing__event-card">
             <a href="#" class="card-event__link">
               <picture class="card-event__picture">
-                <img src="assets/images/Nirvana.png" class="card-event__picture-img" alt="img" />
+                <source type="iage/webp" srcset="assets/images/events/nirvana.webp" />
+                <img src="assets/images/events/nirvana.jpg" alt="nirvana" class="card-event__img" />
               </picture>
-              <h3 class="card-event__title">
-                Собираемся и слушаем альбом Nirvana. Nirvana
-              </h3>
-              <p class="card-event__text">
-                Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.
+
+              <h4 class="card-event__title">
+                Собираемся и слушаем альбом Nirvana
+              </h4>
+              <p class="card-event__description">
+                Это третий альбом группы...
               </p>
               <time datetime="2022-12-07T18:00" class="card-event__time">
                 07.12.2022 | начало 18.00
               </time>
             </a>
           </article>
-
-          <article class="listing__card-event card-event">
+          <article class="card-event listing__event-card">
             <a href="#" class="card-event__link">
               <picture class="card-event__picture">
-                <img src="assets/images/Nirvana.png" class="card-event__picture-img" alt="img" />
+                <source type="iage/webp" srcset="assets/images/events/stuff.webp" />
+                <img src="assets/images/events/stuff.jpg" alt="stuff" class="card-event__img" />
               </picture>
-              <h3 class="card-event__title">
-                Собираемся и слушаем альбом Nirvana. Nirvana
-              </h3>
-              <p class="card-event__text">
-                Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.
+
+              <h4 class="card-event__title">
+                Есть тема, нужно обсудить с HowStuffWorks
+              </h4>
+              <p class="card-event__description">
+                Один из самых популярных подкастов в мире...
               </p>
-              <time datetime="2022-12-07T18:00" class="card-event__time">
-                07.12.2022 | начало 18.00
+              <time datetime="2022-12-14T18:30" class="card-event__time">
+                14.12.2022 | начало 18.30
               </time>
             </a>
           </article>
-
-          <article class="listing__card-event card-event">
+          <article class="card-event listing__event-card">
             <a href="#" class="card-event__link">
               <picture class="card-event__picture">
-                <img src="assets/images/Nirvana.png" class="card-event__picture-img" alt="img" />
+                <source type="iage/webp" srcset="assets/images/events/sade.webp" />
+                <img src="assets/images/events/sade.jpg" alt="sade" class="card-event__img" />
               </picture>
-              <h3 class="card-event__title">
-                Собираемся и слушаем альбом Nirvana. Nirvana
-              </h3>
-              <p class="card-event__text">
-                Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.
-              </p>
-              <time datetime="2022-12-07T18:00" class="card-event__time">
-                07.12.2022 | начало 18.00
-              </time>
-            </a>
-          </article>
 
-          <article class="listing__card-event card-event">
-            <a href="#" class="card-event__link">
-              <picture class="card-event__picture">
-                <img src="assets/images/Nirvana.png" class="card-event__picture-img" alt="img" />
-              </picture>
-              <h3 class="card-event__title">
-                Собираемся и слушаем альбом Nirvana. Nirvana
-              </h3>
-              <p class="card-event__text">
-                Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.
+              <h4 class="card-event__title">
+                Вечер | The Best of Sade
+              </h4>
+              <p class="card-event__description">
+                Музыка группы имеет элективный характер, сочетая в себе элементы мызуки соул, джаза, ритм-блюза и фанка.
               </p>
-              <time datetime="2022-12-07T18:00" class="card-event__time">
-                07.12.2022 | начало 18.00
-              </time>
-            </a>
-          </article>
-
-          <article class="listing__card-event card-event">
-            <a href="#" class="card-event__link">
-              <picture class="card-event__picture">
-                <img src="assets/images/Nirvana.png" class="card-event__picture-img" alt="img" />
-              </picture>
-              <h3 class="card-event__title">
-                Собираемся и слушаем альбом Nirvana. Nirvana
-              </h3>
-              <p class="card-event__text">
-                Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.
-              </p>
-              <time datetime="2022-12-07T18:00" class="card-event__time">
-                07.12.2022 | начало 18.00
+              <time datetime="2022-12-16T20:00" class="card-event__time">
+                16.12.2022 | начало 20.00
               </time>
             </a>
           </article>
         </div>
-      </div>
+      </section>
     </div>
   </main>
   <footer class="page-footer"></footer>
