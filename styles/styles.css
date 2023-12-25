@@ -548,8 +548,8 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 405px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 405px;
   min-width: 280px;
 }
 .event-card__link {
@@ -584,7 +584,7 @@ button {
   width: 100%;
   padding-top: 107.16%;
 }
-.event-card__picture-img {
+.event-card__img {
   display: block;
   position: absolute;
   top: 0;
@@ -608,7 +608,7 @@ button {
   transition: color 0.2s, text-decoration-color 0.2s;
   transition: color 0.2s, text-decoration-color 0.2s, -webkit-text-decoration-color 0.2s;
 }
-.event-card__text {
+.event-card__description {
   margin: 0 0 auto;
   font-size: 16px;
   line-height: 22px;
