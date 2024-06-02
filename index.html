@@ -1,169 +1,418 @@
 <!DOCTYPE html>
+<!--<html lang="ru" class="show-event-popup">-->
 <html lang="ru">
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="description" content="Арт—пространство для людей, горящих сердец и делом" />
+  <meta name="keywords" content="Lenni Art, пространство, мероприятия" />
+  <meta property="og:title" content="Lenni Art" />
+  <meta property="og:description" content="Арт пространство для людей, горящих сердцем и делом" />
+  <meta property="og:image" content="/assets/images/lenni-art.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lenni-art.ru/" />
   <title>Lenni Art</title>
-  <link rel="stylesheet" href="styles/styles.css?ver=0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossoring>
-  <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
+  <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+  <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicons/favicon.ico" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <script src="scripts/jquery-3.7.1.min.js"></script>
+  <script defer src="https://maps.googleapis.com/maps/api/js?key="></script>
+  <script defer src="scripts/swiper.min.js"></script>
+  <script defer src="scripts/jquery.selectric.min.js"></script>
+  <script defer src="scripts/jquery.mask.js"></script>
+  <script defer src="scripts/air-datepicker.js"></script>
+  <script defer src="scripts/jquery.validate.min.js"></script>
+  <script defer src="scripts/jquery.validate-init.js"></script>
+  <script defer src="scripts/main.min.js"></script>
 </head>
+
 
 <body class="body">
   <header class="page-header">
     <div class="page-header__container">
       <a href="index.html" class="page-header__logo">
-        <!-- <img src="assets/images/logo.svg" 
-        class="page-header__logo-img"/> -->
         <svg class="page-header__logo-img" width="202" height="147">
           <use xlink:href="assets/icons/symbols.svg#logo"></use>
         </svg>
       </a>
       <nav class="page-header__nav">
-        <a href="#" class="page-header__nav-link">Меропртиятия</a>
+        <a href="events.html" class="page-header__nav-link">Мероприятия</a>
         <a href="#" class="page-header__nav-link">Блог</a>
         <a href="#" class="page-header__nav-link">О нас</a>
         <a href="#" class="page-header__nav-link">Контакты</a>
+        <div class="page-header__nav-user">
+          <a href="#" class="link page-header__nav-user-link">
+            Александр С.
+          </a>
+          <a href="#" class="page-header__nav-logout">
+            <svg class="page-header__nav-logout-icon" width="24" height="24">
+              <use xlink:href="assets/icons/symbols.svg#door"></use>
+            </svg>
+          </a>
+        </div>
       </nav>
-      <a href="#" class="btn page-header__user-btn">Войти</a>
+      <div class="page-header__btn-container">
+        <a href="#" class="page-header__user-btn">
+          Войти
+          <svg class="page-header__user-icon" width="21" height="18">
+            <use xlink:href="assets/icons/symbols.svg#user"></use>
+          </svg>
+        </a>
+        <button type="button" class="page-header__nav-toggle" id="js-navToggle"></button>
+      </div>
     </div>
-
   </header>
+
+
   <main class="main">
     <div class="home">
       <header class="main-header home__main-header">
         <h1 class="main-header__title">Арт - пространство</h1>
         <picture class="main-header__picture">
-          <img src="assets/images/LENNI.png" class="main-header__img" />
+          <img src="assets/images/LENNI.svg" class="main-header__picture-img" alt="logo" />
         </picture>
         <p class="main-header__text">
-          для людей, горящих сердец и делом
+          для людей, горящих сердцем и делом
+          <br />
           место для настоящего
         </p>
       </header>
-      <section class="offers home__offers"></section>
+      <!-- prettier-ignore -->
+      <section class="offers home__offers">
+        <div class="offers__container">
+          <h3 class="offers__i-want">Я хочу:</h3>
+          <div class="offers__btns">
+            <a href="#" id="js-eventOpenBtn" class="offers__btn-1 btn btn--red">Провести мероприятия</a>
+            <a href="#" class="offers__btn-2 btn">Стать арендатором</a>
+          </div>
+        </div>
+      </section>
+
+
       <section class="about home__about">
         <div class="about__container">
-          <h2 class="about__section-title section-title">
-            О нас
-          </h2>
+          <h2 class="about__section-title title">О нас</h2>
           <div class="about__block">
-            <h3 class="about__title">
-              Проект «Millennials»
-            </h3>
+            <h3 class="about__title">Проект «Millennials»</h3>
             <p class="about__text">
-              Вдохновлен молодыми идейными людьми, увлеченными творчеством, эмоциями и желанием сделать мир лучше, проявить себя. У них есть талант и стремление, у нас возможность помочь им воплотить их мечту в реальность.
+              Вдохновлен молодыми идейными людьми, увлеченными творчеством, эмоциями и
+              желанием сделать мир лучше, проявить себя. У них есть талант и
+              стремление, у нас возможность помочь им воплотить их мечту в реальность.
             </p>
           </div>
           <div class="about__block2">
             <picture class="about__picture">
-              <img class="about__img" src="assets/images/about1.jpg" />
+              <source media="(max-width: 450px)" type="image/webp" srcset="assets/images/about/about1_phone.webp" />
+              <source media="(max-width: 450px)" srcset="assets/images/about/about1_phone.jpg" />
+
+              <source type="image/webp" srcset="assets/images/about/about1.webp" />
+
+              <img src="assets/images/about/about1.jpg" class="about__img" alt="about1" />
             </picture>
             <picture class="about__picture2">
-              <img class="about__img" src="assets/images/about2.jpg" />
+              <img src="assets/images/about/about2.jpg" class="about__img" alt="about2" />
             </picture>
             <h3 class="about__title about__title--w868 about__title--2">
               Мы предоставляем площади для вашего мероприятия
             </h3>
             <p class="about__text about__text--2">
               И оказываем помощь с организацией, если вам это нужно.
-              Наша цель: вовлечь в культурную жизнь города как можно больше людей, помочь молодым ребятам сделать первые шаги к своей мечте и рассказать всем о том, что их волнует.
+              <br> Наша цель: вовлечь в культурную жизнь города как можно больше людей, помочь молодым
+              ребятам сделать первые шаги к своей мечте и рассказать всем о том, что
+              их волнует.
             </p>
           </div>
           <div class="about__block3">
             <picture class="about__picture3">
-              <img class="about__img2" src="assets/images/about3.jpg" />
+              <source media="(max-width: 450px)" type="image/webp" srcset="assets/images/about/about3_phone.webp" />
+              <source media="(max-width: 450px)" srcset="assets/images/about/about3_phone.jpg" />
+
+              <source type="image/webp" srcset="assets/images/about/about3.webp" />
+
+              <img src="assets/images/about/about3.jpg" class="about__img2" alt="about3" />
             </picture>
             <div class="about__block3-wrapper">
-              <p class="about__text about__text--mb90">
-                Мы уже успешно организовали и провели более 100 проектов. Посмотрите, как это было классно.
+              <p class="about__text about__text--3">
+                Мы уже успешно организовали и провели более 100 проектов. Посмотрите,
+                как это было классно.
               </p>
-              <a href="#" class="about__link link">
-                <span class="link__name">
-                  Смотреть
-                </span>
-                <svg class="link__icon" width="91" height="60">
-                  <use xlink:href="assets/icons/symbols.svg#link">
-                </svg>
+              <a href="#" class="about__link link link--h0">
+                <span class="link__name"> Смотреть </span>
+                <div class="link__arrow arrow">
+                  <svg class="arrow__icon" width="91" height="60">
+                    <use xlink:href="assets/icons/symbols.svg#link"></use>
+                  </svg>
+                </div>
               </a>
             </div>
           </div>
         </div>
       </section>
-      <section class="upcoming home__upcoming"></section>
-      <section class="listing home__listing">
-        <h2 class="listing__title section-title">Мероприятия</h2>
 
-        <div class="listing__events-list">
-          <!-- prettier-ignore -->
-          <article class="event-card listing__event-card">
-            <a href="#" class="event-card__link">
-              <picture class="event-card__picture">
 
-                <img src="assets/images/events/nirvana.jpg" alt="nirvana" class="event-card__img" />
-              </picture>
+      <section class="upcoming home__upcoming">
+        <div class="upcoming__top-border"></div>
+        <div class="upcoming__container">
+          <h2 class="upcoming__section-title title">Мероприятия</h2>
 
-              <h4 class="event-card__title">
-                Собираемся и слушаем альбом Nirvana
-              </h4>
-              <p class="event-card__description">
-                Это третий альбом группы, выпущенный после смерти Курта Кобейна и первый, содержащий студийный материал.
-              </p>
-              <time datetime="2022-12-07T18:00" class="event-card__time">
-                07.12.2022 | начало 18.00
-              </time>
-            </a>
-          </article>
-          <article class="event-card listing__event-card">
-            <a href="#" class="event-card__link">
-              <picture class="event-card__picture">
+          <div class="upcoming__swiper swiper swiper--3s js-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <!-- prettier-ignore -->
+                <article class="card-event ">
+                  <a href="../event.html" class="card-event__link">
+                    <picture class="card-event__picture">
+                      <img src="assets/images/events/nirvana.jpg" class="card-event__picture-img" alt="nirvana" />
+                    </picture>
 
-                <img src="assets/images/events/stuff.jpg" alt="stuff" class="event-card__img" />
-              </picture>
+                    <h3 class="card-event__title">Собираемся и слушаем альбом Nirvana.</h3>
 
-              <h4 class="event-card__title">
-                Есть тема, нужно обсудить с HowStuffWorks
-              </h4>
-              <p class="event-card__description">
-                Один из самых популярных подкастов в мире. В нём авторы объясняют, как устроены разные вещи.
-              </p>
-              <time datetime="2022-12-14T18:30" class="event-card__time">
-                14.12.2022 | начало 18.30
-              </time>
-            </a>
-          </article>
-          <article class="event-card listing__event-card">
-            <a href="#" class="event-card__link">
-              <picture class="event-card__picture">
+                    <p class="card-event__text">Это третий альбом группы...</p>
 
-                <img src="assets/images/events/sade.jpg" alt="sade" class="event-card__img" />
-              </picture>
+                    <time datetime="2022-12-07T18:00" class="card-event__time">07.12.2022 | начало 18.00</time>
+                  </a>
+                </article>
 
-              <h4 class="event-card__title">
-                Вечер | The Best of Sade
-              </h4>
-              <p class="event-card__description">
-                Музыка группы имеет элективный характер, сочетая в себе элементы мызуки соул, джаза, ритм-блюза и фанка.
-              </p>
-              <time datetime="2022-12-16T20:00" class="event-card__time">
-                16.12.2022 | начало 20.00
-              </time>
-            </a>
-          </article>
+              </div>
+
+              <div class="swiper-slide">
+                <!-- prettier-ignore -->
+                <article class="card-event ">
+                  <a href="../event.html" class="card-event__link">
+                    <picture class="card-event__picture">
+                      <img src="assets/images/events/stuff.jpg" class="card-event__picture-img" alt="stuff" />
+                    </picture>
+
+                    <h3 class="card-event__title">Есть тема, нужно обсудить с HowStuffWorks</h3>
+
+                    <p class="card-event__text">Один из самых популярных подкастов в мире...</p>
+
+                    <time datetime="2022-12-14T18:30" class="card-event__time">14.12.2022 | начало 18.30</time>
+                  </a>
+                </article>
+
+              </div>
+
+              <div class="swiper-slide">
+                <!-- prettier-ignore -->
+                <article class="card-event ">
+                  <a href="../event.html" class="card-event__link">
+                    <picture class="card-event__picture">
+                      <img src="assets/images/events/sade.jpg" class="card-event__picture-img" alt="sade" />
+                    </picture>
+
+                    <h3 class="card-event__title">Вечер | The Best of Sade</h3>
+
+                    <p class="card-event__text">Музыка группы имеет эклектичный характер, сочетая в себе элементы музыки соул, джаза, ритм-блюза и фанка.</p>
+
+                    <time datetime="2022-12-16T20:00" class="card-event__time">16.12.2022 | начало 20.00</time>
+                  </a>
+                </article>
+
+              </div>
+              <div class="swiper-slide">
+                <!-- prettier-ignore -->
+                <article class="card-event ">
+                  <a href="../event.html" class="card-event__link">
+                    <picture class="card-event__picture">
+                      <img src="assets/images/events/malevich.jpg" class="card-event__picture-img" alt="malevich" />
+                    </picture>
+
+                    <h3 class="card-event__title">Выставка Малевича в Томске</h3>
+
+                    <p class="card-event__text">Это будет самая полная выставка с 1988 года, того времени, когда впервые заговорили о Малевиче. Экспозиция займёт два этажа павильона.</p>
+
+                    <time datetime="2022-12-23T20:00" class="card-event__time">23.12.2022 | начало 20.00</time>
+                  </a>
+                </article>
+
+              </div>
+              <div class="swiper-slide">
+                <!-- prettier-ignore -->
+                <article class="card-event ">
+                  <a href="../event.html" class="card-event__link">
+                    <picture class="card-event__picture">
+                      <img src="assets/images/events/tatler.jpg" class="card-event__picture-img" alt="tatler" />
+                    </picture>
+
+                    <h3 class="card-event__title">Мастер — класс по студийной съемке от Tatler</h3>
+
+                    <p class="card-event__text">Фотографы издания расскажут, как им удается создавать потрясающие кадры и что может испортить весь процесс.</p>
+
+                    <time datetime="2022-12-25T13:00" class="card-event__time">25.12.2022 | начало 13.00</time>
+                  </a>
+                </article>
+
+              </div>
+
+              <div class="swiper-slide">
+                <!-- prettier-ignore -->
+                <article class="card-event ">
+                  <a href="../event.html" class="card-event__link">
+                    <picture class="card-event__picture">
+                      <img src="assets/images/events/theHatters.jpg" class="card-event__picture-img" alt="tatler" />
+                    </picture>
+
+                    <h3 class="card-event__title">Повесилимся на славу на концерте The Hatters</h3>
+
+                    <p class="card-event__text">Российская джипси-фолк-рок группа, основанная в 2016 году в Санкт-Петербурге. В основной состав группы входят Юрий Музыченко</p>
+
+                    <time datetime="2022-12-27T10:00" class="card-event__time">27.12.2022 | начало 10.00</time>
+                  </a>
+                </article>
+
+              </div>
+            </div>
+            <footer class="swiper-footer">
+              <button type="button" class="swiper-arrow-prev arrow arrow--rotate180">
+                <svg class="arrow__icon" width="92" height="62">
+                  <use xlink:href="assets/icons/symbols.svg#link"></use>
+                </svg>
+              </button>
+
+              <div class="swiper-pagination"></div>
+
+              <button type="button" class="swiper-arrow-next arrow">
+                <svg class="arrow__icon" width="92" height="62">
+                  <use xlink:href="assets/icons/symbols.svg#link"></use>
+                </svg>
+              </button>
+            </footer>
+          </div>
+
+          <a href="#" class="upcoming__link link">Смотреть все</a>
         </div>
+
+        <div class="upcoming__bottom-border"></div>
       </section>
-      <section class="contacts home__contacts">
+
+
+      <section class="listing home__listing">
+        <h2 class="listing__title title">Блог</h2>
+
+        <div class="listing__article-list">
+          <!-- prettier-ignore -->
+          <article class="article-card listing__article-card">
+            <a href="#" class="article-card__link">
+              <picture class="article-card__picture">
+                <source media="(max-width: 450px)" type="image/webp" srcset="assets/images/blog/theatre.webp" />
+                <source media="(max-width: 450px)" srcset="assets/images/blog/theatre.jpg" />
+
+                <source media="(max-width: 1019px)" type="image/webp" srcset="assets/images/blog/theatre_tablet.webp" />
+                <source media="(max-width: 1019px)" srcset="assets/images/blog/theatre_tablet.jpg" />
+
+                <source type="image/webp" srcset="assets/images/blog/theatre.webp" />
+
+                <img src="assets/images/blog/theatre.jpg" alt="theatre photosession" class="article-card__img" />
+              </picture>
+            </a>
+
+            <div class="article-card__info">
+              <time datetime="2022-11-26T00:00" class="article-card__time">26.11.2022</time>
+
+              <a href="#" class="article-card__title-link">
+                <h4 class="article-card__title">Фотосессия в стенах Театра драмы</h4>
+
+                <div class="article-card__arrow arrow">
+                  <svg class="arrow__icon" width="92" height="62">
+                    <use xlink:href="assets/icons/symbols.svg#link"></use>
+                  </svg>
+                </div>
+              </a>
+
+              <p class="article-card__description">Организовывая фотосессию для локального бренда одежды мы смогли воплотить все пожелания заказчика и у нас получилась отличная работа. Смотрите как это было.</p>
+            </div>
+          </article>
+          <article class="article-card listing__article-card">
+            <a href="#" class="article-card__link">
+              <picture class="article-card__picture">
+                <source media="(max-width: 450px)" type="image/webp" srcset="assets/images/blog/vr.webp" />
+                <source media="(max-width: 450px)" srcset="assets/images/blog/vr.jpg" />
+
+                <source media="(max-width: 1019px)" type="image/webp" srcset="assets/images/blog/vr_tablet.webp" />
+                <source media="(max-width: 1019px)" srcset="assets/images/blog/vr_tablet.jpg" />
+
+                <source type="image/webp" srcset="assets/images/blog/vr.webp" />
+
+                <img src="assets/images/blog/vr.jpg" alt="vr" class="article-card__img" />
+              </picture>
+            </a>
+
+            <div class="article-card__info">
+              <time datetime="2022-11-05T00:00" class="article-card__time">05.11.2022</time>
+
+              <a href="#" class="article-card__title-link">
+                <h4 class="article-card__title">Выставка VR в Томске</h4>
+
+                <div class="article-card__arrow arrow">
+                  <svg class="arrow__icon" width="92" height="62">
+                    <use xlink:href="assets/icons/symbols.svg#link"></use>
+                  </svg>
+                </div>
+              </a>
+
+              <p class="article-card__description">Клуб виртуальной реальности - это другие миры. яркие эмоции. новый опыт. ... Мы предоставляем нашим клиентам лучший игровой VR-опыт в Томске.</p>
+            </div>
+          </article>
+          <article class="article-card listing__article-card">
+            <a href="#" class="article-card__link">
+              <picture class="article-card__picture">
+                <source media="(max-width: 450px)" type="image/webp" srcset="assets/images/blog/rockingRadio.webp" />
+                <source media="(max-width: 450px)" srcset="assets/images/blog/rockingRadio.jpg" />
+
+                <source media="(max-width: 1019px)" type="image/webp" srcset="assets/images/blog/rockingRadio_tablet.webp" />
+                <source media="(max-width: 1019px)" srcset="assets/images/blog/rockingRadio_tablet.jpg" />
+
+                <source type="image/webp" srcset="assets/images/blog/rockingRadio.webp" />
+
+                <img src="assets/images/blog/rockingRadio.jpg" alt="rocking radio" class="article-card__img" />
+              </picture>
+            </a>
+
+            <div class="article-card__info">
+              <time datetime="2022-11-01T00:00" class="article-card__time">01.11.2022</time>
+
+              <a href="#" class="article-card__title-link">
+                <h4 class="article-card__title">Rocking radio в заброшенном ангаре</h4>
+
+                <div class="article-card__arrow arrow">
+                  <svg class="arrow__icon" width="92" height="62">
+                    <use xlink:href="assets/icons/symbols.svg#link"></use>
+                  </svg>
+                </div>
+              </a>
+
+              <p class="article-card__description">15 электрогенераторов, километры проводов и пару тонн света. Все это для того, чтобы организовать лучшую вечеринку года для ребят из Новосибирска.</p>
+            </div>
+          </article>
+
+        </div>
+
+        <a href="#" class="listing__link link">Смотреть все</a>
+      </section>
+
+
+      <section class="contacts home__contacts home__contacts">
         <div class="contacts__container">
-          <h2 class="contacts__title section-title">
-            Контакты
-          </h2>
+          <h2 class="contacts__title title">Контакты</h2>
           <div class="contacts__wrapper">
             <div class="contacts__items">
-              <div class="contacts-item">
+              <div class="contacts__item contacts-item">
                 <div class="contacts-item__img">
                   <svg class="contacts-item__icon" width="24" height="24">
-                    <use xlink:href="assets/icons/symbols.svg#location">
+                    <use xlink:href="assets/icons/symbols.svg#location"></use>
                   </svg>
                 </div>
                 <div class="contacts-item__content">
@@ -172,209 +421,248 @@
                   <p class="contacts-item__info">оф. 207-208</p>
                 </div>
               </div>
-
-              <div class="contacts-item">
+              <div class="contacts__item contacts-item">
                 <div class="contacts-item__img">
                   <svg class="contacts-item__icon" width="24" height="24">
-                    <use xlink:href="assets/icons/symbols.svg#home">
+                    <use xlink:href="assets/icons/symbols.svg#home"></use>
                   </svg>
                 </div>
                 <div class="contacts-item__content">
                   <h4 class="contacts-item__title">Отдел аренды</h4>
-                  <a href="tel: 74993500730" class="contacts-item__info">+7 499 350 0730</a>
-                  <a href="mailto: hi@tagree.ru" class="contacts-item__info">hi@tagree.ru</a>
+                  <a href="tel:+74993500730" class="contacts-item__info">+7 499 350 0730</a>
+                  <a href="mailto:hi@tagree.ru" class="contacts-item__info">hi@tagree.ru</a>
                 </div>
               </div>
-              <div class="contacts-item">
+              <div class="contacts__item contacts-item">
                 <div class="contacts-item__img">
                   <svg class="contacts-item__icon" width="24" height="24">
-                    <use xlink:href="assets/icons/symbols.svg#star">
+                    <use xlink:href="assets/icons/symbols.svg#star"></use>
                   </svg>
                 </div>
                 <div class="contacts-item__content">
                   <h4 class="contacts-item__title">Отдел мероприятий</h4>
-                  <a href="tel: 74993500730" class="contacts-item__info">+7 499 350 0730</a>
-                  <a href="mailto: hi@tagree.ru" class="contacts-item__info">hi@tagree.ru</a>
+                  <a href="tel:+74993500730" class="contacts-item__info">+7 499 350 0730</a>
+                  <a href="mailto:hi@tagree.ru" class="contacts-item__info">hi@tagree.ru</a>
                 </div>
               </div>
             </div>
-            <div class="contacts__map">
-              <img src="assets/images/map.jpg" alt="map">
+            <div class="contacts__map-container">
+              <div class="contacts__map" id="js-contactsMap"></div>
             </div>
           </div>
         </div>
       </section>
-      <div class="doit home__doit"></div>
+
+
+      <div class="doit home__doit">
+        <div class="doit__container">
+          <p class="doit__text">
+            <span class="doit__text-part-1">Просто делайте,</span>
+            <span class="doit__text-part-2">что нравится,</span>
+            <span class="doit__text-part-3">а мы вам поможем</span>
+          </p>
+        </div>
+      </div>
     </div>
   </main>
 
   <footer class="page-footer">
     <div class="page-footer__container">
-      <div class="page-footer__border"></div>
-      <div class="page-footer__wrapper">
+      <div class="page-footer__separator"></div>
+
+      <div class="page-footer__nav-subcribe-container">
         <nav class="page-footer__nav">
-          <a href="" class="page-footer__nav-link">Календарь мероприятий</a>
-          <a href="" class="page-footer__nav-link">Провести мероприятие</a>
-          <a href="" class="page-footer__nav-link">Стать арендатором</a>
-          <a href="" class="page-footer__nav-link">Наши проекты</a>
-          <a href="" class="page-footer__nav-link">Контакты</a>
+          <a href="#" class="page-footer__nav-link">Календарь мероприятий</a>
+          <a href="#" class="page-footer__nav-link">Провести мероприятие</a>
+          <a href="#" class="page-footer__nav-link">Стать арендатором</a>
+          <a href="#" class="page-footer__nav-link">Наши проекты</a>
+          <a href="#" class="page-footer__nav-link">Контакты</a>
         </nav>
-        <form class="page-footer__form subscribe">
-          <h4 class="subscribe__title">
-            Подпишись и будь в курсе происходящего
-          </h4>
-          <div class="subscribe__wrapper">
-            <input type="email" name="email" placeholder="Email" class="subscribe__input" required />
-            <button type="submit" class="subscribe__submit">Подписаться</button>
+
+        <form action="https://jsonplaceholder.typicode.com/posts" class="page-footer__subscribe-form subscribe-form" id="js-subscribeForm">
+          <div class="subscribe-form__field">
+            <span class="subscribe-form__field-label">Подпишись и будь в курсе происходящего</span>
+
+            <div class="subscribe-form__wrapper">
+              <input id="js-subscribeEmail" class="subscribe-form__field-input" type="email" placeholder="Email" name="email" required />
+
+              <button class="subscribe-form__send-btn" type="submit" name="send">
+                Подписаться
+              </button>
+            </div>
           </div>
-          <label class="subscribe__check check">
-            <input type="checkbox" class="check__input" name="agree" required />
+
+          <label class="check check--pt0 subscribe-form__check">
+            <input class="check__input" type="checkbox" name="agree" required checked />
+
             <span class="check__mark"></span>
-            <span class="check__label">
-              Подписаться
+            <span class="check__label check__label--s">
               Согласен на обработку персональных данных
             </span>
           </label>
         </form>
       </div>
+
+      <div class="page-footer__vault">
+        <div class="page-footer__policy">
+          <a href="#" class="link page-footer__millennials">© Millennials 2022</a>
+          <a href="#" class="link page-footer__confident">Политика конфиденциальности</a>
+          <a href="#" class="link page-footer__cookies">Cookies</a>
+        </div>
+        <div class="page-footer__social">
+          <a href="#" class="page-footer__inst-link">
+            <svg class="page-footer__social-icon" width="58" height="58">
+              <use xlink:href="assets/icons/symbols.svg#social_inst"></use>
+            </svg>
+          </a>
+          <a href="#" class="page-footer__inst-link">
+            <svg class="page-footer__social-icon" width="58" height="58">
+              <use xlink:href="assets/icons/symbols.svg#social_vk"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="page-footer__tagree">
+          <a href="#" class="link page-footer__tagree-label">Создание и продвижение
+            <svg class="page-footer__tagree-icon" width="56" height="17">
+              <use xlink:href="assets/icons/symbols.svg#tagree"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
   </footer>
-
-  <div class="pp">
-    <div class="pp__container">
+  <div class="pp" id="js-eventPP">
+    <div class="pp__wrapper">
       <div class="pp__sticky-close">
-        <button type="button" class="pp__sticky-btn">
-          <svg class="pp__btn-icon" width="24" height="24">
+        <button type="button" class="pp__x-btn x-btn js-eventCloseBtn">
+          <svg class="x-btn__icon" width="24" height="24">
             <use xlink:href="assets/icons/symbols.svg#x"></use>
           </svg>
         </button>
       </div>
-      <div class="pp__wrapper">
+
+      <div class="pp__container">
         <h3 class="pp__title">
           Заполните форму
           <br />
           и мы подберем площадку
         </h3>
-        <div class="pp__form form">
+
+        <form class="pp__form form" id="js-eventForm">
           <div class="form__list">
-            <div class="form__field form__field--w50 field">
-              <h6 class="field__title">
-                Формат мероприятия:
-              </h6>
+            <div class="field form__field form__field--w50">
+              <h6 class="field__title">Формат мероприятия:</h6>
               <div class="field__radio radio">
-                <label class="radio__label">
-                  <input type="radio" name="format" value="seminar" class="radio__input" checked />
+                <label class="radio__item">
+                  <input class="radio__input" type="radio" name="format" value="seminar" checked />
                   <span class="radio__mark"></span>
-                  <span class="radio__name">Мастер-класс/семинар</span>
+                  <span class="radio__label">Мастер-класс/семинар</span>
                 </label>
 
-                <label class="radio__label">
-                  <input type="radio" name="format" value="concert" class="radio__input" />
+                <label class="radio__item">
+                  <input class="radio__input" type="radio" name="format" value="concert" />
                   <span class="radio__mark"></span>
-                  <span class="radio__name">Концерт/выступление</span>
+                  <span class="radio__label">Концерт/выступление</span>
                 </label>
 
-                <label class="radio__label">
-                  <input type="radio" name="format" value="show" class="radio__input" />
+                <label class="radio__item">
+                  <input class="radio__input" type="radio" name="format" value="show" />
                   <span class="radio__mark"></span>
-                  <span class="radio__name">Выставка/показ</span>
+                  <span class="radio__label">Выставка/показ</span>
                 </label>
 
-                <label class="radio__label">
-                  <input type="radio" name="format" value="other" class="radio__input" />
+                <label class="radio__item">
+                  <input class="radio__input" type="radio" name="format" value="other" />
                   <span class="radio__mark"></span>
-                  <span class="radio__name">Другое</span>
+                  <span class="radio__label">Другое</span>
                 </label>
               </div>
             </div>
-            <div class="form__group">
-              <div class="form__field form__field--mb30 field">
+
+            <div class="form__group form__group--w50">
+              <div class="form__field field">
                 <h6 class="field__title">Планируемое количество посетителей:</h6>
-                <select name="amount" class="field__select">
-                  <option value="20">
-                    до 20 человек
-                  </option>
-                  <option value="100">
-                    от 20 до 100 человек
-                  </option>
-                  <option value="500">
-                    от 100 до 500 человек
-                  </option>
-                  <option value="501">
-                    более 500 человек
-                  </option>
+
+                <select class="field__select js-selectric" name="amount">
+                  <option value="20">до 20 человек</option>
+                  <option value="100">от 20 до 100 человек</option>
+                  <option value="500">от 100 до 500 человек</option>
+                  <option value="1000">более 500 человек</option>
                 </select>
               </div>
-              <div class="form__field field">
+
+              <div class="form__field field js-dateField">
                 <h6 class="field__title">Дата проведения:</h6>
-                <div class="field__inputs">
-                  <input class="field__input field__input--w55 field__input--datetime" type="text" placeholder="ММ" />
-                  <input class="field__input field__input--w55 field__input--datetime" type="text" placeholder="ДД" />
-                  <input class="field__input field__input--w110 field__input--datetime" type="text" placeholder="ГГГГ" />
+
+                <div class="field__date">
+                  <div class="field__date-inputs">
+                    <input class="field__date-input js-dateDay" type="text" placeholder="ДД" readonly />
+                    <input class="field__date-input js-dateMonth" type="text" placeholder="ММ" readonly />
+                    <input class="field__date-input field__date-input--year js-dateYear" type="text" placeholder="ГГГГ" readonly />
+                  </div>
+                  <input class="field__date-picker js-dateInput" type="text" name="date" readonly required />
                 </div>
               </div>
             </div>
           </div>
+
           <div class="form__section">
-            <h6 class="field__title">
-              Контактные данные:
-            </h6>
-            <div class="form__list form__list--mb50">
-              <label class="form__field form__field--w50 field">
-                <span class="field__label">
-                  Имя*
-                </span>
-                <input type="text" class="field__input" placeholder="Имя" name="name" required />
+            <h6 class="form__section-title">Контакные данные:</h6>
+            <div class="form__list">
+              <label class="field form__field form__field--w50">
+                <span class="field__label">Имя*</span>
+                <input class="field__input" type="text" placeholder="Имя" name="name" required />
               </label>
-              <label class="form__field form__field--w50 field">
-                <span class="field__label">
-                  Фамилия*
-                </span>
-                <input type="text" class="field__input" placeholder="Фамилия" name="last_name" required />
-              </label>
-              <label class="form__field form__field--w50 field">
-                <span class="field__label">
-                  Телефон*
-                </span>
-                <input type="tel" class="field__input" placeholder="+7()____ __ __" name="phone" required />
-              </label>
-              <label class="form__field form__field--w50 field">
-                <span class="field__label">
-                  Email*
-                </span>
-                <input type="email" class="field__input" placeholder="Email" name="email" required />
-              </label>
-            </div>
 
-            <label class="form__field form__field--mb30 field">
-              <span class="field__label field__label--textarea">
-                Есть пожелания? Напишите нам:
-              </span>
-              <textarea class="field__textarea" name="wish"></textarea>
-            </label>
+              <label class="field form__field form__field--w50">
+                <span class="field__label">Фамилия*</span>
+                <input class="field__input" type="text" placeholder="Фамилия" name="surname" required />
+              </label>
 
-            <label class="form__check form__check--mb40 check">
-              <input type="checkbox" class="check__input" name="agree" required />
-              <span class="check__mark"></span>
-              <span class="check__label">
-                Я соглашаюсь с пользовательским соглашением и с политикой использования персональных данных
-              </span>
-            </label>
-            <div class="form__btns">
-              <button type="submit" class="form__btn btn">
-                Отправить
-              </button>
-              <button type="button" class="form__btnm btnm">
-                Закрыть
-              </button>
+              <label class="field form__field form__field--w50">
+                <span class="field__label">Телефон*</span>
+                <input class="field__input js-mobileMask" type="tel" placeholder="+7 (___) ___ __ __" name="phone" required />
+              </label>
+
+              <label class="field form__field form__field--w50">
+                <span class="field__label">Email*</span>
+                <input class="field__input" type="email" placeholder="Email" name="email" required />
+              </label>
             </div>
           </div>
 
-        </div>
+          <label class="field form__field">
+            <span class="field__title">Есть пожелания? Напишите нам:</span>
+
+            <textarea class="field__textarea" name="wish"></textarea>
+          </label>
+
+          <div class="form__check-list">
+            <label class="form__cheak check">
+              <input class="check__input" type="checkbox" name="agree" required checked />
+
+              <span class="check__mark"></span>
+              <span class="check__label check__label--s">
+                Я соглашаюсь с пользовательским соглашением и с политикой
+                использования персональных данных
+              </span>
+            </label>
+          </div>
+
+          <div class="form__btns">
+            <button type="submit" class="btn form__submit form__submit--w50">
+              Отправить
+            </button>
+
+            <button type="button" class="form__close js-eventCloseBtn">
+              Закрыть
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  </div>
+
 </body>
 
 </html>
